@@ -7,14 +7,28 @@ class NewConf(object):
             "run_exp.py",
             ],
         job_name=[
-            "cifar10_1_episodic_oracle_model_selection",
-            # "cifar10_1_online_last_iterate",
+            "cifar10c_episodic_oracle_model_selection",
+            # "cifar10c_online_last_iterate",
         ],
         base_data_name=[
             "cifar10",
         ],
         data_names=[
-            "cifar10_1",
+            "cifar10_c_deterministic-gaussian_noise-5",
+            "cifar10_c_deterministic-shot_noise-5",
+            "cifar10_c_deterministic-impulse_noise-5",
+            "cifar10_c_deterministic-defocus_blur-5",
+            "cifar10_c_deterministic-glass_blur-5",
+            "cifar10_c_deterministic-motion_blur-5",
+            "cifar10_c_deterministic-zoom_blur-5",
+            "cifar10_c_deterministic-snow-5",
+            "cifar10_c_deterministic-frost-5",
+            "cifar10_c_deterministic-fog-5",
+            "cifar10_c_deterministic-brightness-5",
+            "cifar10_c_deterministic-contrast-5",
+            "cifar10_c_deterministic-elastic_transform-5",
+            "cifar10_c_deterministic-pixelate-5",
+            "cifar10_c_deterministic-jpeg_compression-5",
         ],
         model_name=[
             "resnet26",
@@ -60,7 +74,7 @@ class NewConf(object):
             [5e-4], 
             [1e-4],
         ],
-        n_train_steps=[50],
+        n_train_steps=[10],
         # last_iterate
         # lr=[
         #     5e-3,

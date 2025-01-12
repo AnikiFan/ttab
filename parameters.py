@@ -61,7 +61,8 @@ def get_args():
 
     # define the test scenario.
     parser.add_argument("--test_scenario", default=None, type=str)
-    parser.add_argument(
+    # used for settings that are irrelevant with whether it is for training or testing
+    parser.add_argument( 
         "--base_data_name",
         default="cifar10",
         choices=[
@@ -77,7 +78,8 @@ def get_args():
         type=str,
     )
     parser.add_argument("--src_data_name", default="cifar10", type=str)
-    parser.add_argument(
+    # data_names decide the dataset for test scenario
+    parser.add_argument( 
         "--data_names", default="cifar10_c_deterministic-gaussian_noise-5", type=str
     )
     parser.add_argument(

@@ -25,7 +25,7 @@ def get_pickle_info(root_data_path, experiments):
         ]
 
     results = dict((path, load_pickle(path)) for path in file_paths)
-    info = functools.reduce(lambda a, b: a + b, list(results.values()))
+    info = functools.reduce(lambda a, b: a + b, list(results.values()) ) if results else []
     return info
 
 

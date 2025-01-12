@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 import parameters
 import ttab.configs.utils as configs_utils
 import ttab.loads.define_dataset as define_dataset
@@ -36,6 +37,7 @@ def main(init_config):
         meta_conf=config,
     )
     benchmark.eval()
+    os.system('tmux kill-window')
 
 
 if __name__ == "__main__":

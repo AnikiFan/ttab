@@ -59,7 +59,7 @@ class NewConf(object):
         ],
         inter_domain=["HomogeneousNoMixture"],
         python_path=["/root/miniconda3/bin/python"],
-        data_path=["/run/determined/workdir/data/"],
+        data_path=["./datasets/"],
         ckpt_path=[
             "./pretrained_ckpts/classification/resnet50_with_head/officehome/rn50_bn_art.pth",
             "./pretrained_ckpts/classification/resnet50_with_head/officehome/rn50_bn_art.pth",
@@ -73,6 +73,20 @@ class NewConf(object):
             "./pretrained_ckpts/classification/resnet50_with_head/officehome/rn50_bn_realworld.pth",
             "./pretrained_ckpts/classification/resnet50_with_head/officehome/rn50_bn_realworld.pth",
             "./pretrained_ckpts/classification/resnet50_with_head/officehome/rn50_bn_realworld.pth",
+        ],
+        src_data_name=[
+            "officehome_art",
+            "officehome_art",
+            "officehome_art",
+            "officehome_clipart",
+            "officehome_clipart",
+            "officehome_clipart",
+            "officehome_product",
+            "officehome_product",
+            "officehome_product",
+            "officehome_realworld",
+            "officehome_realworld",
+            "officehome_realworld",
         ],
         # oracle_model_selection
         lr_grid=[
@@ -102,5 +116,6 @@ class NewConf(object):
         coupled=[
             "data_names",
             "ckpt_path",
+            "src_data_name"
         ],
     )

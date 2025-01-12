@@ -64,7 +64,7 @@ class NewConf(object):
         non_iid_ness=[0.1],
         non_iid_pattern=["class_wise_over_domain"],
         python_path=["/root/miniconda3/bin/python"],
-        data_path=["/run/determined/workdir/data/"],
+        data_path=["./datasets/"],
         ckpt_path=[
             "./pretrained_ckpts/classification/resnet26_with_head/cifar100/rn26_bn.pth",
         ],
