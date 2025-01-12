@@ -63,10 +63,10 @@ class NewConf(object):
         inter_domain=["HomogeneousNoMixture"],
         non_iid_ness=[0.1],
         non_iid_pattern=["class_wise_over_domain"],
-        python_path=["/opt/conda/bin/python"],
+        python_path=["/root/miniconda3/bin/python"],
         data_path=["/run/determined/workdir/data/"],
         ckpt_path=[
-            "./data/pretrained_ckpts/classification/resnet26_with_head/cifar100/rn26_bn.pth",
+            "./pretrained_ckpts/classification/resnet26_with_head/cifar100/rn26_bn.pth",
         ],
         # oracle_model_selection
         lr_grid=[

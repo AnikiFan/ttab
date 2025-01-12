@@ -47,7 +47,7 @@ class NewConf(object):
             "true",
         ],
         inter_domain=["HomogeneousNoMixture"],
-        python_path=["/home/ttab/anaconda3/envs/test_algo/bin/python"],
+        python_path=["/root/minconda3/bin/python"],
         data_path=["./datasets"],
         ckpt_path=[
             "./pretrain/checkpoint/resnet18_with_head/yearbook/resnet18_bn.pth",
