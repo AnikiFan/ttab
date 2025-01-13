@@ -7,7 +7,7 @@ class NewConf(object):
             "run_exp.py",
             ],
         job_name=[
-            "pacs_episodic_oracle_model_selection"
+            "sar_pacs_episodic_oracle_model_selection"
         ],
         base_data_name=[
             "pacs",

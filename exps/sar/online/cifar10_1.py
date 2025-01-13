@@ -7,7 +7,7 @@ class NewConf(object):
             "run_exp.py",
             ],
         job_name=[
-            "cifar10_1_online_last_iterate",
+            "sar_cifar10_1_online_last_iterate",
         ],
         base_data_name=[
             "cifar10",

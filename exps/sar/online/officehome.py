@@ -7,7 +7,7 @@ class NewConf(object):
             "run_exp.py",
             ],
         job_name=[
-            "officehome_online_last_iterate",
+            "sar_officehome_online_last_iterate",
         ],
         base_data_name=[
             "officehome",

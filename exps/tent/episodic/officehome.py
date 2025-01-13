@@ -7,7 +7,7 @@ class NewConf(object):
             "run_exp.py",
             ],
         job_name=[
-            "officehome_episodic_oracle_model_selection",
+            "tent_officehome_episodic_oracle_model_selection",
         ],
         base_data_name=[
             "officehome",
