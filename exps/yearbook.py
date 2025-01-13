@@ -53,7 +53,7 @@ class NewConf(object):
             "./pretrain/checkpoint/resnet18_with_head/yearbook/resnet18_bn.pth",
         ],
         # oracle_model_selection
-        lr_grid=[
+        lr=[
             [1e-3], 
             [5e-4], 
             [1e-4],

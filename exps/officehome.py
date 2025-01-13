@@ -89,7 +89,7 @@ class NewConf(object):
             "officehome_realworld",
         ],
         # oracle_model_selection
-        lr_grid=[
+        lr=[
             [1e-3], 
             [5e-4], 
             [1e-4],

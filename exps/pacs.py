@@ -89,7 +89,7 @@ class NewConf(object):
             "pacs_sketch",
         ],
         # oracle_model_selection
-        lr_grid=[
+        lr=[
             [1e-3], 
             [5e-4], 
             [1e-4],
