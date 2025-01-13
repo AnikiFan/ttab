@@ -219,7 +219,6 @@ def create_jobs_on_node(conf, scripts):
             is_complete = True
 
     # exit.
-    print(f"\n\nfinish jobs with base_data_name:{conf.base_data_name} model_adaptation_method:{conf.model_adaptation_method} model_selection_method:{conf.model_selection_method}")
     sys.exit(0)
 
 
