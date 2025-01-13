@@ -69,7 +69,7 @@ class NewConf(object):
             "./pretrained_ckpts/classification/resnet26_with_head/cifar10/rn26_bn.pth", # Since ttab will automatically download the pretrained model from torchvision or huggingface, what ckpt_path is here does not matter.
         ],
         # oracle_model_selection
-        lr_grid=[
+        lr=[
             [1e-3], 
             [5e-4], 
             [1e-4],
