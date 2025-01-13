@@ -219,6 +219,7 @@ def create_jobs_on_node(conf, scripts):
             is_complete = True
 
     # exit.
+    print(f"\n\nfinish jobs@{conf.job_id}")
     sys.exit(0)
 
 
