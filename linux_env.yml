@@ -1,4 +1,4 @@
-name: base
+name: ttab
 channels:
   - anaconda
   - pytorch
