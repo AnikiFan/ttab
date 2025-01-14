@@ -2,7 +2,7 @@ class NewConf(object):
     # create the list of hyper-parameters to be replaced.
     to_be_replaced = dict(
         # general for world.
-        seed=[2022, 2023, 2024],
+        seed=[2022],
         main_file=[
             "run_exp.py",
             ],

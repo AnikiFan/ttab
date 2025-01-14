@@ -2,12 +2,12 @@ class NewConf(object):
     # create the list of hyper-parameters to be replaced.
     to_be_replaced = dict(
         # general for world.
-        seed=[2022, 2023, 2024],
+        seed=[2022],
         main_file=[
             "run_exp.py",
             ],
         job_name=[
-            "sar_cifar10_1_online_last_iterate",
+            "sar_cifar10_1_online_oracle_model_selection",
         ],
         base_data_name=[
             "cifar10",
@@ -22,7 +22,7 @@ class NewConf(object):
             "sar",
         ],
         model_selection_method=[
-            "last_iterate",
+            "oracle_model_selection",
         ],
         offline_pre_adapt=[
             "false",
@@ -41,14 +41,12 @@ class NewConf(object):
             "./pretrained_ckpts/classification/resnet26_with_head/cifar10/rn26_bn.pth",
         ],
         lr=[
-            5e-3,
-            1e-3,
-            5e-4,
+            [1e-3], 
+            [5e-4], 
+            [1e-4],
         ],
         n_train_steps=[
-            1,
-            2,
-            3,
+            50
         ],
         intra_domain_shuffle=["true"],
         record_preadapted_perf=["true"],

@@ -2,12 +2,12 @@ class NewConf(object):
     # create the list of hyper-parameters to be replaced.
     to_be_replaced = dict(
         # general for world.
-        seed=[2022, 2023, 2024],
+        seed=[2022],
         main_file=[
             "run_exp.py",
             ],
         job_name=[
-            "sar_pacs_online_last_iterate",
+            "sar_pacs_online_oracle_model_selection",
         ],
         base_data_name=[
             "pacs",
@@ -33,7 +33,7 @@ class NewConf(object):
             "sar",
         ],
         model_selection_method=[
-            "last_iterate",
+            "oracle_model_selection",
         ],
         offline_pre_adapt=[
             "false",
@@ -75,14 +75,12 @@ class NewConf(object):
             "pacs_sketch",
         ],
         lr=[
-            5e-3,
-            1e-3,
-            5e-4,
+            [1e-3], 
+            [5e-4], 
+            [1e-4],
         ],
         n_train_steps=[
-            1,
-            2,
-            3,
+            25
         ],
         entry_of_shared_layers=["layer3"],
         intra_domain_shuffle=["true"],
