@@ -1,6 +1,8 @@
 import subprocess
 if __name__ == '__main__':
     experiments = [
+        cmd.split() for cmd in
+        [
         # tent online
         # "python run_exps.py --script_path exps/tent/online/cifar10c.py --num_jobs_per_node 40 --num_jobs_per_script 1 --wait_in_seconds_per_job 0.1",
         # "python run_exps.py --script_path exps/tent/online/cifar100c.py --num_jobs_per_node 40 --num_jobs_per_script 1 --wait_in_seconds_per_job 0.1",
@@ -8,11 +10,12 @@ if __name__ == '__main__':
         # "python run_exps.py --script_path exps/tent/online/officehome.py --num_jobs_per_node 3 --num_jobs_per_script 1 --wait_in_seconds_per_job 1",
         # "python run_exps.py --script_path exps/tent/online/pacs.py --num_jobs_per_node 3 --num_jobs_per_script 1 --wait_in_seconds_per_job 1",
         # tent episodic
-        "python run_exps.py --script_path exps/tent/episodic/cifar10c.py --num_jobs_per_node 40 --num_jobs_per_script 1 --wait_in_seconds_per_job 0.1",
-        "python run_exps.py --script_path exps/tent/episodic/cifar100c.py --num_jobs_per_node 40 --num_jobs_per_script 1 --wait_in_seconds_per_job 0.1",
-        "python run_exps.py --script_path exps/tent/episodic/cifar10_1.py --num_jobs_per_node 27 --num_jobs_per_script 1 --wait_in_seconds_per_job 0.1",
-        "python run_exps.py --script_path exps/tent/episodic/officehome.py --num_jobs_per_node 3 --num_jobs_per_script 1 --wait_in_seconds_per_job 1",
-        "python run_exps.py --script_path exps/tent/episodic/pacs.py --num_jobs_per_node 3 --num_jobs_per_script 1 --wait_in_seconds_per_job 1",
+        "python run_exps.py --script_path exps/tent/episodic/cifar10c.py --num_jobs_per_node 2 --num_jobs_per_script 1 --wait_in_seconds_per_job 3",
+        "python run_exps.py --script_path exps/tent/episodic/cifar100c.py --num_jobs_per_node 2 --num_jobs_per_script 1 --wait_in_seconds_per_job 3",
+        "python run_exps.py --script_path exps/tent/episodic/cifar10_1.py --num_jobs_per_node 2 --num_jobs_per_script 1 --wait_in_seconds_per_job 3",
+        "python run_exps.py --script_path exps/tent/episodic/officehome.py --num_jobs_per_node 2 --num_jobs_per_script 1 --wait_in_seconds_per_job 3",
+        "python run_exps.py --script_path exps/tent/episodic/pacs.py --num_jobs_per_node 2 --num_jobs_per_script 1 --wait_in_seconds_per_job 3",
+        ]
     ]
     for experiment in experiments:
         print(f"Running experiment {experiment}")
