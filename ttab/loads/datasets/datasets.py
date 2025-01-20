@@ -113,6 +113,8 @@ class CIFARDataset(PyTorchDataset):
         if "deterministic" in data_name:
             data_shift_class = functools.partial(
                 NoShiftedData, data_name=data_name
+            # 'shift' is relative to given data, so that if the given data is already shifted, e.g. CIFAR10-C,
+            # it shoulg be treated as no shifted data
             )  # deterministic data is directly loaded from extrinsic files.
 
         # basic check.

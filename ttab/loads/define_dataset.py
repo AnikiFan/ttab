@@ -158,7 +158,7 @@ class MergeMultiTestDatasets(object):
                     for test_dataset in test_datasets
                 ]
             )
-        elif isinstance(test_case.inter_domain, HeterogeneousNoMixture):
+        elif isinstance(test_case.inter_domain, HeterogeneousNoMixture): # heterogeneous means every dataset has different iid?
             return self._merge_datasets(
                 [
                     self._intra_non_iid_shift(
@@ -556,8 +556,9 @@ class ConstructTestDataset(object):
         self, scenario: Scenario, data_augment: bool = False
     ) -> PyTorchDataset:
         return MergeMultiTestDatasets().merge(
-            test_case=scenario.test_case,
+            test_case=scenario.test_case, # test case tells us how to merge different test datasets
             test_datasets=self.get_test_datasets(scenario.test_domains, data_augment),
+            # one test domain corresponds to one test dataset
             src_dataset=self.get_src_dataset(scenario, data_augment),
             random_seed=self.seed,
         )
