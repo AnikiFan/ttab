@@ -10,7 +10,7 @@ if __name__ == '__main__':
         datefmt='%Y-%m-%d %H:%M:%S',
     )
     writer = SummaryWriter()
-    ttm = TaskVectorModel(model=get_cifar10_26(),pool_size=10,num_classes=10,img_size=(3,32,32),batch_size=16,max_batch=8,writer=writer)
+    ttm = TaskVectorModel(model=get_cifar10_26(),pool_size=8,num_classes=10,img_size=(3,32,32),batch_size=16,writer=writer)
     data_loader = get_data(True,'gaussian_noise',16)
     correct = []
     for step,epoch,batch in data_loader:

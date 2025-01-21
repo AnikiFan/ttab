@@ -1,6 +1,7 @@
 import torch
 from argparse import Namespace
 import os
+import torch.nn as nn
 
 from ttab.model_adaptation import get_model_adaptation_method
 from ttab.model_selection import get_model_selection_method
@@ -78,9 +79,26 @@ def get_cifar10_26(ckpt_path=os.path.join(os.curdir,'pretrained_ckpts','classifi
     model.eval()
     return model
 
+def get_cifar10_26_gn(ckpt_path=os.path.join(os.curdir,'pretrained_ckpts','classification','resnet26_with_head','cifar10','rn26_gn.pth')):
+    model = resnet('cifar10',26,group_norm_num_groups=8).cuda()
+    ckpt = torch.load(ckpt_path,map_location='cuda:0')
+    model.load_state_dict(ckpt['model'])
+    model.eval()
+    return model
+
 def get_cifar100_26(ckpt_path=os.path.join(os.curdir,'pretrained_ckpts','classification','resnet26_with_head','cifar100','rn26_bn.pth')):
     model = resnet('cifar100',26).cuda()
     ckpt = torch.load(ckpt_path,map_location='cuda:0')
     model.load_state_dict(ckpt['model'])
     model.eval()
     return model
+
+
+def load_weight(state_dict,model):
+    for key,param in state_dict.items():
+        module_name,attr_name = key.rsplit('.',1)
+        module = model
+        for sub_name in module_name.split('.'):
+            module = getattr(module,sub_name)
+        setattr(module,attr_name,param)
+
