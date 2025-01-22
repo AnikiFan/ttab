@@ -1,5 +1,5 @@
 from task_vector.TaskVectorModel import TaskVectorModel
-from task_vector.utils import get_data,get_cifar10_26_gn,set_seed
+from task_vector.utils import get_data, get_cifar10_26_gn, set_seed, get_inter_mixture_data
 import logging
 from torch.utils.tensorboard import SummaryWriter
 import pandas as pd
@@ -28,20 +28,34 @@ if __name__ == '__main__':
         'pixelate',
         'jpeg_compression',
     ]
+    seeds = [2022, 2023, 2024]
     corruption_df = pd.DataFrame(
-        columns=[''],
-        index=range(5)
+        columns=['baseline', 'task_vector'],
+        index=seeds
     )
     writer = SummaryWriter()
-    for corruption in corruptions:
-        for seed in range(5):
-            model = get_cifar10_26_gn()
-            data_loader = get_data(True,corruption,16)
-            correct = []
-            for step,epoch,batch in data_loader:
-                y_hat = model(batch._x).max(dim=1)[1]
-                correct.append((y_hat==batch._y).sum().item()/len(y_hat))
-                writer.add_scalar('accuracy',correct[-1],step)
-                writer.flush()
-            corruption_df.loc[seed,corruption] = sum(correct)/len(correct)
-    corruption_df.to_csv(os.path.join(os.curdir,'result','baseline.csv'))
+    for seed in seeds:
+        set_seed(seed)
+        model = get_cifar10_26_gn()
+        data_loader = get_inter_mixture_data(True, 16, seed)
+        correct = []
+        for step, epoch, batch in data_loader:
+            y_hat = model(batch._x).max(dim=1)[1]
+            correct.append((y_hat == batch._y).sum().item() / len(y_hat))
+            writer.add_scalar('accuracy', correct[-1], step)
+            writer.flush()
+        corruption_df.loc[seed, 'baseline'] = sum(correct) / len(correct)
+
+
+    for seed in seeds:
+        set_seed(seed)
+        model = TaskVectorModel(model=get_cifar10_26_gn(), pool_size=8, num_classes=10, img_size=(3, 32, 32),batch_size=16, writer=writer)
+        data_loader = get_inter_mixture_data(True, 16, seed)
+        correct = []
+        for step, epoch, batch in data_loader:
+            y_hat = model(batch._x).max(dim=1)[1]
+            correct.append((y_hat == batch._y).sum().item() / len(y_hat))
+            writer.add_scalar('accuracy', correct[-1], step)
+            writer.flush()
+        corruption_df.loc[seed, 'task_vector'] = sum(correct) / len(correct)
+    corruption_df.to_csv(os.path.join(os.curdir, 'result', 'inter_mixture.csv'))

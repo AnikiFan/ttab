@@ -11,6 +11,7 @@ if __name__ == '__main__':
         format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S',
     )
+    seeds = [2022,2023,2024]
     corruptions = [
         'gaussian_noise',
         'shot_noise',
@@ -30,13 +31,14 @@ if __name__ == '__main__':
     ]
     corruption_df = pd.DataFrame(
         columns=corruptions,
-        index=range(5)
+        index=seeds
     )
     writer = SummaryWriter()
     for corruption in corruptions:
-        for seed in range(5):
+        for seed in seeds:
+            set_seed(seed)
             ttm = TaskVectorModel(model=get_cifar10_26_gn(),pool_size=8,num_classes=10,img_size=(3,32,32),batch_size=16,writer=writer)
-            data_loader = get_data(True,corruption,16)
+            data_loader = get_data(True,corruption,16,seed=seed)
             correct = []
             for step,epoch,batch in data_loader:
                 y_hat = ttm.forward(batch._x).max(dim=1)[1]
