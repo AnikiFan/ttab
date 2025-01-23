@@ -7,6 +7,7 @@ from ttab.benchmark import Benchmark
 from ttab.loads.define_model import define_model, load_pretrained_model
 from ttab.model_adaptation import get_model_adaptation_method
 from ttab.model_selection import get_model_selection_method
+from argparse import Namespace
 
 
 def main(init_config):
