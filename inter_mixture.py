@@ -33,8 +33,8 @@ if __name__ == '__main__':
         columns=['baseline', 'task_vector'],
         index=seeds
     )
-    writer = SummaryWriter()
     for seed in seeds:
+        writer = SummaryWriter()
         set_seed(seed)
         model = get_cifar10_26_gn()
         data_loader = get_inter_mixture_data(True, 16, seed)
@@ -48,6 +48,7 @@ if __name__ == '__main__':
 
 
     for seed in seeds:
+        writer = SummaryWriter()
         set_seed(seed)
         model = TaskVectorModel(model=get_cifar10_26_gn(), pool_size=8, num_classes=10, img_size=(3, 32, 32),batch_size=16, writer=writer)
         data_loader = get_inter_mixture_data(True, 16, seed)

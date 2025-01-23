@@ -26,6 +26,7 @@ class TaskVectorModel(nn.Module):
         self.lambdas = nn.Parameter(torch.zeros(self.pool_size).cuda())
         self.threshold = threshold
         self.scores = torch.ones(self.pool_size)*self.threshold*math.log(num_classes)
+        self.criteria = self.threshold*math.log(num_classes)
         # 熵值小于threshold*log(num_classes)便被认为是优质的
         self.num_classes = num_classes
         self.n = 0 # 当前task vector的数量
@@ -36,6 +37,7 @@ class TaskVectorModel(nn.Module):
         self.cur_batch = 0
         self.step = 0
         self.update_iteration = update_iteration
+        self.last_update = 0
         if logger is None:
             self.logger = logging.getLogger("TaskVectorModel")
             self.logger.setLevel(logging.DEBUG)
@@ -74,10 +76,11 @@ class TaskVectorModel(nn.Module):
     def update_pool(self, vector, batch,score):
         self.writer.add_scalar("score",score.item(), self.step)
         self.writer.flush()
-        update = self.n==0 or \
-                  torch.max(self.scores[:self.n].min(),torch.tensor(self.threshold*math.log(self.num_classes)*0.5))>score.item()
+        update = self.n==0 or self.scores[:self.n].min()>score.item() or (self.last_update>10 and score.item()<self.criteria)
         if not update:
+            self.last_update += 1
             return
+        self.last_update = 0
         self.logger.debug(f'update vector pool with score {score.item()}')
         self.insert(vector)
         self.logger.debug(f'update sample pool')
